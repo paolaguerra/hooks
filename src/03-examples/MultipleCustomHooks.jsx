@@ -20,7 +20,11 @@ export const MultipleCustomHooks = () => {
       ? <LoadingQuote /> 
       : <Quote author={author} quote={quote} />}
 
-      <button className="btn btn-primary" onClick={increment}>
+      <button 
+      className="btn btn-primary" 
+      onClick={increment} 
+      disabled={isLoading}
+      >
         Next quote
       </button>
     </div>
