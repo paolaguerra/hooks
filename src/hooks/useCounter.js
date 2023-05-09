@@ -9,7 +9,7 @@ const increment = (value = 1) => {
 }
 
 const decrement = (value = 1) => {
-   // if (counter === 0) return;
+    // if (counter === 0) return;
     setCounter( (current) => current - value);
 
 }
