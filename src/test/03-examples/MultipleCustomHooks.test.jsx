@@ -4,23 +4,19 @@ import { useFetch } from "../../hooks/useFetch";
 import { useCounter } from "../../hooks/useCounter";
 
 jest.mock('../../hooks/useFetch');
-// jest.mock('../../hooks/useCounter');
+jest.mock('../../hooks/useCounter');
 
 describe('Pruenas en <MultipleCustomHooks />', () => { 
 
-    // const mockIncrement = jest.fn();
-
-    // useCounter.mockReturnValue({
-    //     counter: 1,
-    //     increment: mockIncrement
-    // });
-
-    // beforeEach( () => {
-    //     jest.clearAllMocks();
-    // })
-
     test('debe de mostrar el componente por defecto', () => { 
 
+        const mockIncrement = jest.fn();
+
+        useCounter.mockReturnValue({
+            counter: 1,
+            increment: mockIncrement
+        });
+    
         useFetch.mockReturnValue({
             data: null,
             isLoading: true,
@@ -41,6 +37,13 @@ describe('Pruenas en <MultipleCustomHooks />', () => {
 
      test('debe de mostrar un Quote', () => { 
 
+        const mockIncrement = jest.fn();
+
+        useCounter.mockReturnValue({
+            counter: 1,
+            increment: mockIncrement
+        });
+
         useFetch.mockReturnValue({
             data: [{author: 'Paola', quote: 'Hola Mundo'}],
             isLoading: false,
@@ -58,6 +61,13 @@ describe('Pruenas en <MultipleCustomHooks />', () => {
 
       test('debe de llamar la funcion de incrementar', () => { 
 
+        const mockIncrement = jest.fn();
+
+        useCounter.mockReturnValue({
+            counter: 1,
+            increment: mockIncrement
+        });
+    
         useFetch.mockReturnValue({
             data: [{ author: 'Paola', quote: 'Hola Mundo' }],
             isLoading: false,
@@ -68,7 +78,7 @@ describe('Pruenas en <MultipleCustomHooks />', () => {
         const nexButton = screen.getByRole('button', {name: 'Next quote' });
         fireEvent.click(nexButton);
 
-        // expect(mockIncrement).toHaveBeenCalled();
+        expect(mockIncrement).toHaveBeenCalled();
 
        });
  });
